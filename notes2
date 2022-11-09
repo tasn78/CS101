@@ -1,0 +1,46 @@
+
+
+def file():
+    while True:
+        try:
+            input_file = input('Enter the name of the file to open ')
+            open(input_file)
+            return input_file
+        except IOError:
+            print('Could not open file', input_file)
+            continue
+
+def word_dict(file):
+    word_count = {}
+    with open(file) as f:
+        lst = [word for line in f for word in line.split()]
+        for word in lst:
+            word.replace('.', ' ')
+            word.strip()
+            word.lower()
+            if len(word) < 3:
+                continue
+            elif word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
+
+    return word_count
+
+
+file = file()
+dict_count = word_dict(file)
+dict_srt = {k: v for k, v in sorted(dict_count.items(), key=lambda item: item[1])}
+print('Most frequently used words')
+count = 1
+print("{0:<10}{1:<20}{2:>10}".format('#', 'Word', 'Freq.'))
+print('=' * 40)
+for k, v in dict_srt.items():
+    print("{0:<10}{1:<20}{2:>10}".format(count, k, v))
+    count += 1
+    if count == 11:
+        break
+    else:
+        continue
+
+
