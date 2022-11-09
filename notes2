@@ -15,7 +15,7 @@ def word_dict(file):
         for line in f1:
             for i in line:
                 if i in ',.!?-;:':
-                line.replace(i, '')
+                    line.replace(i, '')
         lst = line.lower().split()
         for word in lst:
             word.strip()
@@ -49,5 +49,4 @@ for enum, k, v in enumerate(dict_srt):
 print()
 print('There are', the_ones, 'words that occur only once.')
 print('There are', unique, 'unique words in the document')
-
 
