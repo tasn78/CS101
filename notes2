@@ -14,8 +14,8 @@ def word_dict(file):
         f1 = f.readlines()
         for line in f1:
             for i in line:
-                if i in ',.!?-;:':
-                    line.replace(i, '')
+                if i in ''',.!?-;:':''':
+                    line = line.replace(i, '')
         lst = line.lower().split()
         for word in lst:
             word.strip()
@@ -39,8 +39,8 @@ print('Most frequently used words')
 print("{0:<10}{1:<20}{2:>10}".format('#', 'Word', 'Freq.'))
 print('=' * 40)
 count = 1
-for enum, k, v in enumerate(dict_srt):
-    print("{0:<10}{1:<20}{2:>10}".format(enum, k, v))
+for k, v in enumerate(dict_srt):
+    print("{0:<10}{1:>10}{2:>20}".format(count, k, v))
     count += 1
     if count == 11:
         break
@@ -49,4 +49,3 @@ for enum, k, v in enumerate(dict_srt):
 print()
 print('There are', the_ones, 'words that occur only once.')
 print('There are', unique, 'unique words in the document')
-
